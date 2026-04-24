@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enjoy Your Dream Rental Car</title>
+<style>
+/* ---- Reset ---- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ---- Body & Font ---- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0d0d0d;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* ---- Header ---- */
+.header {
+    text-align: center;
+    padding: 25px 0;
+    font-size: 40px;
+    font-weight: 900;
+    color: #FFD700;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+/* ---- Navbar ---- */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+    background: #1a1a1a;
+    border-bottom: 2px solid #FFD700;
+}
+.navbar button {
+    background: transparent;
+    border: 2px solid #FFD700;
+    color: #FFD700;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+.navbar button:hover {
+    background: #800020;
+    color: #FFD700;
+    transform: scale(1.1);
+}
+
+/* ---- Hero Section ---- */
+.hero {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('https://images.unsplash.com/photo-1503376780353-7e6692767b70');
+    background-size: cover;
+    background-position: center;
+    color: #FFD700;
+}
+.hero h1 {
+    font-size: 60px;
+    font-weight: 900;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    margin-bottom: 20px;
+}
+.hero p {
+    font-size: 22px;
+    color: #e6c200;
+    margin-bottom: 30px;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+.hero .button {
+    font-size: 18px;
+    padding: 15px 30px;
+    border-radius: 35px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* ---- Vehicles Section ---- */
+.vehicles {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #111111;
+}
+.vehicles h2 {
+    font-size: 40px;
+    color: #FFD700;
+    margin-bottom: 40px;
+}
+.vehicle-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    justify-items: center;
+}
+.vehicle-card {
+    background: #1a1a1a;
+    border: 2px solid #FFD700;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 280px;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+.vehicle-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 25px #FFD700;
+}
+.vehicle-card video {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+.vehicle-card h3 {
+    color: #FFD700;
+    font-size: 20px;
+    margin: 15px 0 5px 0;
+}
+.vehicle-card p {
+    color: #e6c200;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.vehicle-card .button {
+    margin-bottom: 15px;
+}
+
+/* ---- Customer Info Section ---- */
+.customer-section {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px;
+    background: #111;
+    border: 2px solid #FFD700;
+    border-radius: 25px;
+    box-shadow: 0 0 25px rgba(212,175,55,0.5);
+    transition: all 0.5s ease;
+}
+.customer-section h2 {
+    color: #FFD700;
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.customer-section label {
+    display: block;
+    color: #ffd700;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+.customer-section input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 2px solid #FFD700;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    transition: 0.3s;
+}
+.customer-section input:focus {
+    border-color: #800020;
+    box-shadow: 0 0 15px rgba(212,175,55,0.5);
+    outline: none;
+}
+.customer-section .button {
+    background: #FFD700;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.customer-section .button:hover {
+    background: #fff;
+}
+
+/* Highlight animation for customer info */
+.highlight {
+    animation: glow 1s ease-in-out 3;
+    border-color: #FF4500 !important;
+}
+@keyframes glow {
+    0% { box-shadow: 0 0 0 #FF4500; }
+    50% { box-shadow: 0 0 15px #FF4500; }
+    100% { box-shadow: 0 0 0 #FF4500; }
+}
+
+/* ---- Info & Contact & Admin ---- */
+.info-box, .contact-box, .admin-box {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #111;
+    border: 2px solid #FFD700;
+    border-radius: 15px;
+}
+.info-box p, .contact-box p {
+    color: #e6c200;
+    margin-bottom: 10px;
+}
+.contact-box button, .admin-box button {
+    margin-top: 10px;
+}
+.admin-box table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.admin-box table, .admin-box th, .admin-box td {
+    border: 1px solid #FFD700;
+}
+.admin-box th, .admin-box td {
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
+.admin-box th {
+    background-color: #800020;
+}
+
+/* ---- Footer ---- */
+.footer {
+    padding: 30px 20px;
+    text-align: center;
+    background: #1a1a1a;
+    border-top: 2px solid #FFD700;
+    color: #FFD700;
+    font-weight: 600;
+    font-size: 16px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">JMC Moto Rentals</div>
+
+<div class="navbar">
+    <button onclick="showSection('home')">Home</button>
+    <button onclick="showSection('vehicles')">Vehicles</button>
+    <button onclick="showSection('customer')">Customer Info</button>
+    <button onclick="showSection('info')">Information</button>
+    <button onclick="showSection('contact')">Contact</button>
+    <button onclick="showSection('admin')">Admin</button>
+</div>
+
+<!-- Home Section -->
+<div id="home" class="section hero">
+    <h1>Enjoy Your Dream Rental Car</h1>
+    <p>Experience Power & Style.</p>
+    <button class="button" onclick="showSection('vehicles')">Explore Vehicles</button>
+</div>
+
+<!-- Vehicles Section -->
+<div id="vehicles" class="section vehicles" style="display:none;">
+    <h2>Our Vehicles</h2>
+    <div class="vehicle-container">
+        <div class="vehicle-card">
+            <video src="C:\Users\Acer\Downloads\civic.mp4" autoplay muted loop></video>
+            <h3>Honda Civic</h3>
+            <p>₱2,000/day</p>
+            <button class="button" onclick="goToCustomer()">Rent</button>
+        </div>
+        <div class="vehicle-card">
+            <video src="C:\Users\Acer\Downloads\car.mp4" autoplay muted loop></video>
+            <h3>Raptor</h3>
+            <p>₱3,500/day</p>
+            <button class="button" onclick="goToCustomer()">Rent</button>
+        </div>
+        <div class="vehicle-card">
+            <video src="C:\Users\Acer\Downloads\montero.mp4" autoplay muted loop></video>
+            <h3>Montero Sport Black</h3>
+            <p>₱3,000/day</p>
+            <button class="button" onclick="goToCustomer()">Rent</button>
+        </div>
+        <div class="vehicle-card">
+            <video src="C:\Users\Acer\Downloads\hilux.mp4" autoplay muted loop></video>
+            <h3>Hilux</h3>
+            <p>₱3,000/day</p>
+            <button class="button" onclick="goToCustomer()">Rent</button>
+        </div>
+        <div class="vehicle-card">
+            <video src="C:\Users\Acer\Downloads\vann.mp4" autoplay muted loop></video>
+            <h3>Van</h3>
+            <p>₱4,500/day</p>
+            <button class="button" onclick="goToCustomer()">Rent</button>
+        </div>
+        <div class="vehicle-card">
+            <video src="C:\Users\Acer\Downloads\Gtrr.mp4" autoplay muted loop></video>
+            <h3>Mercedes</h3>
+            <p>₱3,500/day</p>
+            <button class="button" onclick="goToCustomer()">Rent</button>
+        </div>
+        <div class="vehicle-card">
+            <video src="C:\Users\Acer\Downloads\firrari.mp4" autoplay muted loop></video>
+            <h3>Ferrari</h3>
+            <p>₱5,000/day</p>
+            <button class="button" onclick="goToCustomer()">Rent</button>
+        </div>
+         <div class="vehicle-card">
+            <video src="C:\Users\Acer\Downloads\Xpander.mp4" autoplay muted loop></video>
+            <h3>Xpander</h3>
+            <p>₱3,000/day</p>
+            <button class="button" onclick="goToCustomer()">Rent</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Customer Info Section -->
+<div id="customer" class="section customer-section" style="display:none;">
+    <h2>Enter Your Details</h2>
+    <form id="customerForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="John Doe" required>
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="john@example.com" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" placeholder="09XXXXXXXXX" required>
+
+        <!-- Vehicle selection removed -->
+
+        <label for="date">Rental Date</label>
+        <input type="date" id="date" required>
+
+        <label for="return">Return Date</label>
+        <input type="date" id="return" required>
+
+        <button type="submit" class="button">Submit Details</button>
+    </form>
+</div>
+
+<!-- Info Section -->
+<div id="info" class="section" style="display:none;">
+    <h2>Information</h2>
+    <div class="info-box">
+        <p><b>Operating Hours:</b> 8:00 AM - 8:00 PM</p>
+        <p><b>Booking Policies:</b> 50% deposit required to confirm booking</p>
+        <p><b>Payment Methods:</b> In person payment</p>
+    </div>
+</div>
+
+<!-- Contact Section -->
+<div id="contact" class="section" style="display:none;">
+    <h2>Contact Us</h2>
+    <div class="contact-box">
+        <p><b>Phone:</b> 09776449383</p>
+        <p><b>Email:</b> jmcmoto@email.com</p>
+        <p><b>Location:</b> Pagadian Doctor's</p>
+        <button class="button" onclick="showSection('vehicles')">View Vehicles</button>
+    </div>
+</div>
+
+<!-- Admin Section -->
+<div id="admin" class="section" style="display:none;">
+    <h2>Admin Panel</h2>
+    <div class="admin-box" id="loginBox">
+        <p><b>Login to manage your vehicles and renters:</b></p>
+        <input type="text" class="input-field" placeholder="Username" id="adminUsername">
+        <input type="password" class="input-field" placeholder="Password" id="adminPassword">
+        <button class="button" onclick="loginAdmin()">Login</button>
+    </div>
+    <div class="admin-box" id="adminDashboard" style="display:none;">
+        <h3>Available Vehicles</h3>
+        <table>
+            <tr><th>ID</th><th>Vehicle</th><th>Type</th><th>Price/Day</th><th>Status</th></tr>
+            <tr><td>1</td><td>Honda Civic</td><td>Car</td><td>₱2,000</td><td>Available</td></tr>
+            <tr><td>2</td><td>Raptor</td><td>Car</td><td>₱3,000</td><td>Rented</td></tr>
+            <tr><td>3</td><td>Montero Sport Black</td><td>Car</td><td>₱3,000</td><td>Available</td></tr>
+            <tr><td>4</td><td>Hilux</td><td>Car</td><td>₱9,000</td><td>Available</td></tr>
+            <tr><td>5</td><td>Van</td><td>Car</td><td>₱4,500</td><td>Available</td></tr>
+            <tr><td>6</td><td>Mercedes</td><td>Car</td><td>₱3,500</td><td>Available</td></tr>
+            <tr><td>7</td><td>Ferrari</td><td>Car</td><td>₱5,000</td><td>Available</td></tr>
+            <tr><td>8</td><td>Xpander</td><td>Car</td><td>₱3,500</td><td>Available</td></tr>
+        </table>
+        <br>
+        <h3>Current Renters</h3>
+        <table>
+            <tr><th>ID</th><th>Name</th><th>Vehicle</th><th>Rental Date</th><th>Return Date</th><th>Contact</th><th>Status</th></tr>
+            <tr><td>R001</td><td>Reynier P. Atay</td><td>Honda Civic</td><td>2026-04-05</td><td>2026-04-08</td><td>09123456789</td><td>Active</td></tr>
+            <tr><td>R002</td><td>Khinan L. Cantano</td><td>Raptor</td><td>2026-04-06</td><td>2026-04-09</td><td>09234567890</td><td>Returned</td></tr>
+        </table>
+    </div>
+</div>
+
+<div class="footer">© 2026 JMC Moto Rentals | Luxury on Wheels</div>
+
+<script>
+function showSection(id){
+    const sections = ['home','vehicles','customer','info','contact','admin'];
+    sections.forEach(sec => document.getElementById(sec).style.display='none');
+    document.getElementById(id).style.display='block';
+}
+
+// Admin login
+function loginAdmin() {
+    const username = document.getElementById('adminUsername').value;
+    const password = document.getElementById('adminPassword').value;
+    if(username === 'admin' && password === 'admin123'){
+        document.getElementById('loginBox').style.display='none';
+        document.getElementById('adminDashboard').style.display='block';
+        alert('Welcome Admin!');
+    } else {
+        alert('Invalid credentials');
+    }
+}
+
+// Customer form submission
+document.getElementById('customerForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Thank you! Your rental details have been submitted.");
+    this.reset();
+    showSection('vehicles');
+});
+
+// Function to go to customer info from Rent button
+function goToCustomer() {
+    showSection('customer'); 
+    const section = document.getElementById('customer');
+    section.scrollIntoView({ behavior: 'smooth' });
+    section.classList.add('highlight');
+    setTimeout(() => section.classList.remove('highlight'), 4000);
+}
+</script>
+
+</body>
+</html>
